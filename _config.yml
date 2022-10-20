@@ -22,7 +22,7 @@ title                    : "Six C Archive"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "sixc"
-description              : "creative"\n"comic"\n"credible"\n"clear"\n"continuous"\n"commit"
+description              : "creative"\n\n"comic"\n\n"credible"\n\n"clear"\n\n"continuous"\n\n"commit"
 url                      : "https://sudo-init.github.io" # the base hostname & protocol for your site e.g. 
 baseurl                  : ""# the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
