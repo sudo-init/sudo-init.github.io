@@ -12,19 +12,17 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-
-remote_theme : mmistakes/minimal-mistakes
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : "ko-KR"
+locale                   : "en-US"
 title                    : "Six C Archive"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "sixc"
-description              : "creative"\n\n"comic"\n\n"credible"\n\n"clear"\n\n"continuous"\n\n"commit"
-url                      : "https://sudo-init.github.io" # the base hostname & protocol for your site e.g. 
-baseurl                  : ""# the subpath of your site, e.g. "/blog"
+name                     : "Sixc"
+description              : "My Archive"
+url                      : "https://sudo-init.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
@@ -108,13 +106,13 @@ analytics:
 author:
   name             : "Sixc"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : 
-      - "creative"
-      - "comic"
-      - "credible"
-      - "clear"
-      - "continuous"
-      - "commit"
+  bio              :
+    - "creative"
+    - "comic"
+    - "credible"
+    - "clear"
+    - "continuous"
+    - "commit"
   location         : "Seoul in Korea"
   email            :
   links:
@@ -298,4 +296,3 @@ defaults:
       comments: # true
       share: true
       related: true
-
