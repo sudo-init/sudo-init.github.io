@@ -109,12 +109,12 @@ author:
   name             : "Sixc"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : |
-      "creative
+      creative
       comic
       credible
       clear
       continuous
-      commit"
+      commit
   location         : "Seoul in Korea"
   email            :
   links:
