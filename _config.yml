@@ -108,13 +108,13 @@ analytics:
 author:
   name             : "Sixc"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : |
-      creative
-      comic
-      credible
-      clear
-      continuous
-      commit
+  bio              : 
+      - "creative"
+      - "comic"
+      - "credible"
+      - "clear"
+      - "continuous"
+      - "commit"
   location         : "Seoul in Korea"
   email            :
   links:
