@@ -21,7 +21,7 @@ locale                   : "ko-KR"
 title                    : "Six C Archive"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Logan Kim"
+name                     : "sixc"
 description              : "creative comic credible clear continuous commit"
 url                      : "https://sixc.github.io" # the base hostname & protocol for your site e.g. 
 baseurl                  : ""# the subpath of your site, e.g. "/blog"
