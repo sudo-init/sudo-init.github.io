@@ -22,7 +22,7 @@ title                    : "Six C Archive"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "sixc"
-description              : "creative comic credible clear continuous commit"
+description              : "creative \ncomic \ncredible \nclear \ncontinuous \ncommit"
 url                      : "https://sudo-init.github.io" # the base hostname & protocol for your site e.g. 
 baseurl                  : ""# the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
