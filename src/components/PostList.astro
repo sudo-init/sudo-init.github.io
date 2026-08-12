@@ -1,0 +1,77 @@
+---
+import FormattedDate from './FormattedDate.astro';
+import { postHref, readingTime, type Post } from '../lib/posts';
+
+interface Props {
+  posts: Post[];
+  emptyText?: string;
+}
+
+const { posts, emptyText = '아직 글이 없습니다.' } = Astro.props;
+---
+
+{
+  posts.length === 0 ? (
+    <p class="empty">{emptyText}</p>
+  ) : (
+    <ul class="list">
+      {posts.map((post) => (
+        <li>
+          <a href={postHref(post)}>
+            <p class="meta">
+              <FormattedDate date={post.data.pubDate} />
+              <span> · {readingTime(post.body)} min</span>
+              {post.data.draft && <span class="draft"> · draft</span>}
+            </p>
+            <h2>{post.data.title}</h2>
+            <p class="desc">{post.data.description}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+<style>
+  .list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li + li {
+    margin-top: var(--step-4);
+    padding-top: var(--step-4);
+    border-top: 1px solid var(--border);
+  }
+
+  .meta {
+    margin: 0 0 var(--step-1);
+  }
+
+  .draft {
+    color: var(--accent);
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 1.1875rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.45;
+  }
+
+  a:hover h2 {
+    color: var(--accent);
+  }
+
+  .desc {
+    margin: var(--step-1) 0 0;
+    color: var(--fg-muted);
+    font-size: 0.9375rem;
+  }
+
+  .empty {
+    color: var(--fg-muted);
+  }
+</style>

@@ -1,0 +1,64 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+interface Props {
+  /** 비우면 사이트 이름만 제목으로 쓴다 (홈 전용). */
+  pageTitle?: string;
+  description?: string;
+  ogType?: 'website' | 'article';
+  publishedTime?: Date;
+  modifiedTime?: Date;
+}
+
+const {
+  pageTitle,
+  description = SITE_DESCRIPTION,
+  ogType,
+  publishedTime,
+  modifiedTime,
+} = Astro.props;
+
+const title = pageTitle ? `${pageTitle} · ${SITE_TITLE}` : SITE_TITLE;
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    {/*
+      첫 페인트 전에 테마를 확정해야 다크 모드에서 흰 화면이 번쩍이지 않는다.
+      번들되어 지연 실행되지 않도록 반드시 is:inline 으로 둔다.
+    */}
+    <script is:inline>
+      (() => {
+        const saved = localStorage.getItem('theme');
+        const dark =
+          saved === 'dark' ||
+          (saved === null &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.classList.toggle('dark', dark);
+      })();
+    </script>
+    <BaseHead
+      title={title}
+      description={description}
+      ogType={ogType}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
+    />
+  </head>
+  <body>
+    <div class="page">
+      <a class="skip-link" href="#main">본문 바로가기</a>
+      <Header />
+      <main id="main">
+        <div class="wrap">
+          <slot />
+        </div>
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

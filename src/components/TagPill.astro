@@ -1,0 +1,36 @@
+---
+import { tagHref } from '../lib/posts';
+
+interface Props {
+  tag: string;
+  count?: number;
+}
+
+const { tag, count } = Astro.props;
+---
+
+<a class="pill meta" href={tagHref(tag)}>
+  <span>#{tag}</span>
+  {count !== undefined && <span class="count">{count}</span>}
+</a>
+
+<style>
+  .pill {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4em;
+    padding: 0.15rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+  }
+
+  .pill:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .count {
+    font-size: 0.9em;
+    opacity: 0.6;
+  }
+</style>

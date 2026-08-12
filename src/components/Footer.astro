@@ -1,0 +1,40 @@
+---
+import { AUTHOR, GITHUB_URL } from '../consts';
+
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="wrap bar">
+    <span class="meta">© {year} {AUTHOR}</span>
+    <span class="links">
+      <a class="meta" href="/rss.xml">RSS</a>
+      <a class="meta" href={GITHUB_URL} rel="me noopener" target="_blank"
+        >GitHub</a
+      >
+    </span>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--border);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--step-3);
+    padding-block: var(--step-3);
+  }
+
+  .links {
+    display: flex;
+    gap: var(--step-3);
+  }
+
+  .links a:hover {
+    color: var(--fg);
+  }
+</style>

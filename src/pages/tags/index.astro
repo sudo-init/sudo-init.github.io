@@ -1,0 +1,41 @@
+---
+import TagPill from '../../components/TagPill.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPublishedPosts, groupByTag } from '../../lib/posts';
+
+const groups = groupByTag(await getPublishedPosts());
+---
+
+<BaseLayout pageTitle="Tags" description="주제별로 모아 본 글 목록.">
+  <h1 class="page-title">Tags</h1>
+  <p class="page-lead">주제별로 모아 봤습니다.</p>
+
+  {
+    groups.length === 0 ? (
+      <p class="empty">아직 태그가 없습니다.</p>
+    ) : (
+      <ul class="tags">
+        {groups.map((group) => (
+          <li>
+            <TagPill tag={group.tag} count={group.posts.length} />
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</BaseLayout>
+
+<style>
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--step-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .empty {
+    color: var(--fg-muted);
+  }
+</style>
