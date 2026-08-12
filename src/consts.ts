@@ -1,7 +1,7 @@
 export const SITE_TITLE = 'Six C Archive';
 export const SITE_DESCRIPTION =
   '개발하며 부딪히고 배운 것들을 기록하는 공간. 삽질기, 정리 노트, 그리고 가끔의 잡담.';
-export const AUTHOR = 'Sixc';
+export const AUTHOR = 'sixx';
 export const LOCATION = 'Seoul, Korea';
 export const GITHUB_URL = 'https://github.com/sudo-init';
 
