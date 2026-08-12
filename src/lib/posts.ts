@@ -2,14 +2,22 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 
 export type Post = CollectionEntry<'blog'>;
 
-/** 발행된 글을 최신순으로. 초안은 개발 서버에서만 보인다. */
+/**
+ * 발행된 글을 최신순으로. 초안은 개발 서버에서만 보인다.
+ *
+ * 같은 날 두 편을 쓰면 날짜만으로는 순서가 정해지지 않는다. 그때는
+ * 프론트매터에 시각까지 적으면 되고(`2026-08-12T16:30+09:00`),
+ * 그마저 같으면 파일 이름을 역순으로 써서 빌드마다 순서가 흔들리지 않게 한다.
+ */
 export async function getPublishedPosts(): Promise<Post[]> {
   const posts = await getCollection(
     'blog',
     ({ data }) => import.meta.env.DEV || !data.draft,
   );
   return posts.sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+    (a, b) =>
+      b.data.pubDate.valueOf() - a.data.pubDate.valueOf() ||
+      b.id.localeCompare(a.id),
   );
 }
 
@@ -58,12 +66,16 @@ export function groupByTag(posts: Post[]): TagGroup[] {
 }
 
 /**
- * 프론트매터의 `2026-08-12` 는 UTC 자정으로 파싱되므로 UTC 기준으로 읽는다.
- * 로컬 시간대로 읽으면 빌드 머신에 따라 하루씩 밀린다.
+ * 항상 한국 시간으로 표시한다. 빌드 머신 시간대(GitHub Actions는 UTC)에 따라
+ * 날짜가 하루씩 밀리지 않고, 시각까지 적은 글도 쓴 날짜 그대로 나온다.
  */
+const dateFormatter = new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'Asia/Seoul',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+});
+
 export function formatDate(date: Date): string {
-  const yyyy = date.getUTCFullYear();
-  const mm = `${date.getUTCMonth() + 1}`.padStart(2, '0');
-  const dd = `${date.getUTCDate()}`.padStart(2, '0');
-  return `${yyyy}.${mm}.${dd}`;
+  return dateFormatter.format(date).replaceAll('-', '.');
 }
