@@ -16,9 +16,8 @@
     ui-monospace, SFMono-Regular, 'JetBrains Mono', 'Cascadia Code',
     'Roboto Mono', Consolas, monospace;
 
-  --content-width: 48rem;
-  --toc-width: 12rem;
-  --toc-gap: 2.25rem;
+  --content-width: 60rem;
+  --toc-width: 11rem;
   --step-1: 0.25rem;
   --step-2: 0.5rem;
   --step-3: 1rem;

@@ -33,13 +33,19 @@ const items = Astro.props.headings.filter(
 }
 
 <style>
+  /*
+   * 본문 오른쪽 여백의 한가운데에 놓는다. 여백 폭은 (화면 - 본문) / 2 이므로
+   * 본문 오른쪽 끝에서 그 절반만큼 간 뒤, 목차 폭의 절반을 되돌리면 중앙이다.
+   */
   .toc {
     position: absolute;
     top: 0;
     left: 100%;
     height: 100%;
     width: var(--toc-width);
-    margin-left: var(--toc-gap);
+    margin-left: calc(
+      (100vw - var(--content-width)) / 4 - var(--toc-width) / 2
+    );
   }
 
   /* 본문을 따라 계속 떠 있게. 부모가 글 전체 높이를 차지해야 동작한다. */
@@ -97,8 +103,11 @@ const items = Astro.props.headings.filter(
     }
   }
 
-  /* 오른쪽 여백이 목차를 담을 만큼 넓을 때만 띄운다. */
-  @media (max-width: 77rem) {
+  /*
+   * 여백이 목차를 여유 있게 담을 만큼 넓을 때만 띄운다.
+   * 본문 60rem + 목차 11rem × 2(양쪽 여백) + 숨 쉴 틈 4rem.
+   */
+  @media (max-width: 86rem) {
     .toc {
       display: none;
     }
