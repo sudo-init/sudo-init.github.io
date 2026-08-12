@@ -1,14 +1,17 @@
 ---
+import type { MarkdownHeading } from 'astro';
 import FormattedDate from '../components/FormattedDate.astro';
+import TableOfContents from '../components/TableOfContents.astro';
 import TagPill from '../components/TagPill.astro';
 import BaseLayout from './BaseLayout.astro';
 import { readingTime, type Post } from '../lib/posts';
 
 interface Props {
   post: Post;
+  headings: MarkdownHeading[];
 }
 
-const { post } = Astro.props;
+const { post, headings } = Astro.props;
 const { title, description, pubDate, updatedDate, tags, draft } = post.data;
 ---
 
@@ -19,7 +22,9 @@ const { title, description, pubDate, updatedDate, tags, draft } = post.data;
   publishedTime={pubDate}
   modifiedTime={updatedDate}
 >
-  <article>
+  <div class="shell">
+    <TableOfContents headings={headings} />
+    <article>
     <header>
       <p class="meta">
         <FormattedDate date={pubDate} />
@@ -50,12 +55,23 @@ const { title, description, pubDate, updatedDate, tags, draft } = post.data;
     <div class="prose">
       <slot />
     </div>
-  </article>
+    </article>
 
-  <nav class="back">
-    <a class="meta" href="/">← 목록으로</a>
-  </nav>
+    <nav class="back">
+      <a class="meta" href="/">← 목록으로</a>
+    </nav>
+  </div>
 </BaseLayout>
+
+<style>
+  /*
+   * 본문은 다른 페이지와 같은 자리에 그대로 두고, 목차만 오른쪽 여백에
+   * 띄운다. 목차가 absolute 로 붙을 기준이 되어 준다.
+   */
+  .shell {
+    position: relative;
+  }
+</style>
 
 <style>
   header {

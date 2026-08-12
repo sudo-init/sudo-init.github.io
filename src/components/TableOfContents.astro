@@ -1,0 +1,156 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+// h2·h3 만 목차에 올린다. 그보다 깊은 제목은 목록이 길어지기만 한다.
+const items = Astro.props.headings.filter(
+  (heading) => heading.depth === 2 || heading.depth === 3,
+);
+---
+
+{
+  items.length > 1 && (
+    <nav class="toc" aria-labelledby="toc-heading">
+      <div class="inner">
+        <p class="eyebrow" id="toc-heading">
+          목차
+        </p>
+        <ul>
+          {items.map((heading) => (
+            <li class:list={[{ sub: heading.depth === 3 }]}>
+              <a href={`#${heading.slug}`} data-toc-link={heading.slug}>
+                {heading.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+  )
+}
+
+<style>
+  .toc {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    height: 100%;
+    width: var(--toc-width);
+    margin-left: var(--toc-gap);
+  }
+
+  /* 본문을 따라 계속 떠 있게. 부모가 글 전체 높이를 차지해야 동작한다. */
+  .inner {
+    position: sticky;
+    top: var(--step-4);
+    max-height: calc(100vh - var(--step-5));
+    overflow-y: auto;
+    padding-left: var(--step-3);
+    border-left: 1px solid var(--border);
+  }
+
+  .eyebrow {
+    margin: 0 0 var(--step-2);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--step-2);
+  }
+
+  li.sub {
+    padding-left: var(--step-3);
+  }
+
+  a {
+    display: block;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--fg-muted);
+    transition: color 0.12s ease;
+  }
+
+  a:hover {
+    color: var(--fg);
+  }
+
+  a[aria-current='true'] {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    a {
+      transition: none;
+    }
+  }
+
+  /* 오른쪽 여백이 목차를 담을 만큼 넓을 때만 띄운다. */
+  @media (max-width: 77rem) {
+    .toc {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const links = new Map<string, HTMLAnchorElement>();
+  document
+    .querySelectorAll<HTMLAnchorElement>('[data-toc-link]')
+    .forEach((link) => links.set(link.dataset.tocLink!, link));
+
+  if (links.size > 0) {
+    const headings = [...links.keys()]
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    let active: string | null = null;
+
+    const setActive = (id: string | null) => {
+      if (id === active) return;
+      if (active) links.get(active)?.removeAttribute('aria-current');
+      if (id) links.get(id)?.setAttribute('aria-current', 'true');
+      active = id;
+    };
+
+    // 화면 위쪽을 지나간 제목 중 가장 마지막 것을 현재 위치로 본다.
+    const update = () => {
+      const line = window.scrollY + window.innerHeight * 0.25;
+      let current: string | null = headings.length > 0 ? headings[0]!.id : null;
+      for (const heading of headings) {
+        if (heading.getBoundingClientRect().top + window.scrollY <= line) {
+          current = heading.id;
+        } else {
+          break;
+        }
+      }
+      setActive(current);
+    };
+
+    let queued = false;
+    const onScroll = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => {
+        queued = false;
+        update();
+      });
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+  }
+</script>

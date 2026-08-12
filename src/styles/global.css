@@ -16,7 +16,9 @@
     ui-monospace, SFMono-Regular, 'JetBrains Mono', 'Cascadia Code',
     'Roboto Mono', Consolas, monospace;
 
-  --content-width: 44rem;
+  --content-width: 48rem;
+  --toc-width: 12rem;
+  --toc-gap: 2.25rem;
   --step-1: 0.25rem;
   --step-2: 0.5rem;
   --step-3: 1rem;
@@ -165,6 +167,8 @@ hr {
   font-weight: 700;
   letter-spacing: -0.015em;
   line-height: 1.4;
+  /* 목차에서 눌러 이동했을 때 제목이 화면 맨 위에 붙지 않도록. */
+  scroll-margin-top: var(--step-4);
 }
 
 .prose h2 {
