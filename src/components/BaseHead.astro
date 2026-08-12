@@ -32,6 +32,8 @@ const ogImage = new URL('og-image.png', Astro.site);
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL} />
 
+<!-- 링크 태그를 보지 않고 /favicon.ico 를 그냥 요청하는 브라우저가 있어 함께 둔다. -->
+<link rel="icon" href="/favicon.ico" sizes="32x32" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <meta
