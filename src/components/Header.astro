@@ -1,0 +1,85 @@
+---
+import { NAV_LINKS, SITE_TITLE } from '../consts';
+import ThemeToggle from './ThemeToggle.astro';
+
+const pathname = `/${Astro.url.pathname.replace(/^\/|\/$/g, '')}/`.replace(
+  '//',
+  '/',
+);
+
+/** 하위 경로(글 상세, 태그 상세)에서도 해당 메뉴가 현재 위치로 보이게 한다. */
+function isCurrent(href: string): boolean {
+  if (href === '/') return pathname === '/' || pathname.startsWith('/posts/');
+  return pathname.startsWith(href);
+}
+---
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="/">{SITE_TITLE}</a>
+    <nav aria-label="주요 메뉴">
+      {
+        NAV_LINKS.map((link) => (
+          <a
+            href={link.href}
+            class:list={['nav-link', { current: isCurrent(link.href) }]}
+            aria-current={isCurrent(link.href) ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <ThemeToggle />
+    </nav>
+  </div>
+</header>
+
+<style>
+  header {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--step-3);
+    padding-block: var(--step-3);
+  }
+
+  .brand {
+    font-weight: 700;
+    font-size: 0.9375rem;
+    letter-spacing: -0.01em;
+  }
+
+  .brand:hover {
+    color: var(--accent);
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: var(--step-3);
+  }
+
+  .nav-link {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--fg-muted);
+  }
+
+  .nav-link:hover {
+    color: var(--fg);
+  }
+
+  .nav-link.current {
+    color: var(--fg);
+  }
+
+  @media (max-width: 30rem) {
+    nav {
+      gap: var(--step-2);
+    }
+  }
+</style>

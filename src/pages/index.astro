@@ -1,0 +1,46 @@
+---
+import PostList from '../components/PostList.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SIX_C, SITE_TITLE } from '../consts';
+import { getPublishedPosts } from '../lib/posts';
+
+const posts = await getPublishedPosts();
+---
+
+<BaseLayout>
+  <section class="intro">
+    <h1>{SITE_TITLE}</h1>
+    <p class="meta six-c">{SIX_C.join(' · ')}</p>
+    <p class="blurb">
+      개발하며 부딪힌 문제와 그걸 풀어낸 과정을 기록합니다.<br />
+      정리해두지 않으면 결국 같은 자리에서 또 헤매더라고요.
+    </p>
+  </section>
+
+  <PostList posts={posts} />
+</BaseLayout>
+
+<style>
+  .intro {
+    margin-bottom: var(--step-5);
+    padding-bottom: var(--step-4);
+    border-bottom: 1px solid var(--border);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+
+  .six-c {
+    margin: var(--step-2) 0 0;
+  }
+
+  .blurb {
+    margin: var(--step-3) 0 0;
+    color: var(--fg-muted);
+  }
+</style>

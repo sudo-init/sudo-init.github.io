@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { AUTHOR, GITHUB_URL, LOCATION, SIX_C } from '../consts';
+---
+
+<BaseLayout pageTitle="About" description={`${AUTHOR} 소개.`}>
+  <h1 class="page-title">About</h1>
+
+  <div class="prose">
+    <p>
+      안녕하세요, <strong>{AUTHOR}</strong>입니다. {LOCATION}에서 개발하고 있습니다.
+    </p>
+    <p>
+      이 블로그의 이름 <em>Six C Archive</em>는 일할 때 지키려는 여섯 개의 단어에서
+      따왔습니다.
+    </p>
+    <ul>
+      {SIX_C.map((word) => <li><code>{word}</code></li>)}
+    </ul>
+    <p>
+      막힌 지점과 그걸 넘어선 방법을 남겨둡니다. 며칠 뒤의 저에게 가장 도움이
+      되겠지만, 같은 곳에서 헤매는 누군가에게도 닿으면 좋겠습니다.
+    </p>
+    <p>
+      <a href={GITHUB_URL} rel="me noopener" target="_blank">GitHub</a> ·
+      <a href="/rss.xml">RSS</a>
+    </p>
+  </div>
+</BaseLayout>
