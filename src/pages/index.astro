@@ -1,8 +1,6 @@
 ---
-import { Image } from 'astro:assets';
 import PostList from '../components/PostList.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import logo from '../assets/sixx-logo.png';
 import { SIX_C, SITE_TITLE } from '../consts';
 import { getPublishedPosts } from '../lib/posts';
 
@@ -11,15 +9,6 @@ const posts = await getPublishedPosts();
 
 <BaseLayout>
   <section class="intro">
-    {/* 첫 화면 맨 위라 지연 로딩하면 늦게 뜬다. */}
-    <Image
-      class="logo"
-      src={logo}
-      alt="sixx"
-      width={104}
-      densities={[1, 2]}
-      loading="eager"
-    />
     <h1>{SITE_TITLE}</h1>
     <p class="meta six-c">{SIX_C.join(' · ')}</p>
     <p class="blurb">
@@ -38,26 +27,12 @@ const posts = await getPublishedPosts();
     border-bottom: 1px solid var(--border);
   }
 
-  .logo {
-    display: block;
-    width: 6.5rem;
-    height: auto;
-    margin-bottom: var(--step-3);
-    border-radius: 14px;
-  }
-
   h1 {
     margin: 0;
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: -0.025em;
     line-height: 1.2;
-  }
-
-  @media (max-width: 30rem) {
-    .logo {
-      width: 5rem;
-    }
   }
 
   .six-c {

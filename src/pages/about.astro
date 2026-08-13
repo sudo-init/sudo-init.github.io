@@ -1,9 +1,19 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import logo from '../assets/sixx-logo.png';
 import { AUTHOR, GITHUB_URL, LOCATION, SIX_C } from '../consts';
 ---
 
 <BaseLayout pageTitle="About" description={`${AUTHOR} 소개.`}>
+  <Image
+    class="logo"
+    src={logo}
+    alt="sixx"
+    width={104}
+    densities={[1, 2]}
+    loading="eager"
+  />
   <h1 class="page-title">About</h1>
 
   <div class="prose">
@@ -27,3 +37,19 @@ import { AUTHOR, GITHUB_URL, LOCATION, SIX_C } from '../consts';
     </p>
   </div>
 </BaseLayout>
+
+<style>
+  .logo {
+    display: block;
+    width: 6.5rem;
+    height: auto;
+    margin-bottom: var(--step-3);
+    border-radius: 14px;
+  }
+
+  @media (max-width: 30rem) {
+    .logo {
+      width: 5rem;
+    }
+  }
+</style>
