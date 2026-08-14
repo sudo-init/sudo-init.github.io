@@ -10,7 +10,7 @@ const posts = await getPublishedPosts();
 <BaseLayout>
   <section class="intro">
     <h1>{SITE_TITLE}</h1>
-    <p class="meta six-c">{SIX_C.join(' · ')}</p>
+    <p class="meta six-c">{SIX_C.map(({ word }) => word).join(' · ')}</p>
     <p class="blurb">
       개발하며 부딪힌 문제와 그걸 풀어낸 과정을 기록합니다.<br />
       정리해두지 않으면 결국 같은 자리에서 또 헤매더라고요.
