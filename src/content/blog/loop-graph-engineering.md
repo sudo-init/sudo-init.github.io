@@ -31,10 +31,35 @@ while :; do cat PROMPT.md | claude-code ; done
 규칙은 "한 루프에 한 가지 일만" 시키는 것.
 ([ghuntley.com/ralph](https://ghuntley.com/ralph/))
 
-### 이름이 붙은 건 1년 뒤였다
+이 기법 자체는 이때 이미 "랄프 위검"이라는 이름을 달고 나왔다 — 처음부터
+이름 없는 잡기술이 아니었다는 뜻이다.
 
-2026년 6월 7일, 애디 오스마니(구글 크롬 엔지니어링 리드)가
-`addyosmani.com`에 "Loop Engineering"이라는 글을 올리면서 이 패턴에 이름을
+### 블로그 글로 끝나지 않고 공식 플러그인이 됐다
+
+랄프는 그 뒤로도 계속 쓰이면서 도구로 굳어졌다. 지금은 Anthropic 공식
+저장소(`anthropics/claude-code`)에 플러그인으로 들어가 있다. 배시 터미널을
+따로 열 필요 없이, Claude Code 세션 안에서 이렇게 쓴다.
+
+```bash
+/plugin install ralph-wiggum@claude-plugins-official
+/ralph-loop "Build a REST API for todos..." --completion-promise "COMPLETE" --max-iterations 50
+```
+
+메커니즘도 원형보다 정교해졌다. 별도 배시 루프 대신 **Stop 훅**이 Claude가
+세션을 끝내려는 순간을 가로챈다. 완료 문구(`<promise>COMPLETE</promise>`)가
+출력에 없으면 훅이 같은 프롬프트를 그대로 다시 먹인다 — `--max-iterations`를
+안전장치로 걸어두지 않으면 끝나지 않을 수 있다는 경고도 공식 문서에 그대로
+적혀 있다. 실제 성과 사례도 꽤 구체적으로 남아 있다: YC 해커톤에서 하룻밤
+새 저장소 6개를 만들었고, 5만 달러짜리 계약을 API 비용 297달러로 끝낸
+사례가 있고, 헌틀리 본인은 이 방식으로 3개월에 걸쳐 프로그래밍 언어
+("cursed")를 통째로 만들었다.
+([공식 플러그인 README](https://github.com/anthropics/claude-code/blob/main/plugins/ralph-wiggum/README.md))
+
+### 우산 이름이 붙은 건 1년 뒤였다
+
+랄프는 계속 "랄프"로 불렸지만, 이 패턴 **전체**를 가리키는 상위 용어는
+따로 없었다. 2026년 6월 7일, 애디 오스마니(구글 크롬 엔지니어링 리드)가
+`addyosmani.com`에 "Loop Engineering"이라는 글을 올리면서 그 우산 이름을
 붙였다. ([O'Reilly Radar 재게재](https://www.oreilly.com/radar/loop-engineering/))
 그는 이렇게 정의한다.
 
