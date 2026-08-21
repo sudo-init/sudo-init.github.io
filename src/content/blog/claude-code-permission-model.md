@@ -121,12 +121,15 @@ action: block
 `SandboxSettings` 타입은 권한 규칙과는 완전히 분리된 **런타임 격리** 축을
 정의한다. docstring이 먼저 선을 긋는다.
 
-> "Filesystem read restrictions: Use Read deny rules. Filesystem write
-> restrictions: Use Edit allow/deny rules. Network restrictions: Use
-> WebFetch allow/deny rules. **This** controls how those rules are actually
-> enforced at the OS level."
+> "This controls how Claude Code sandboxes bash commands for filesystem
+> and network isolation. **Important:** Filesystem and network
+> restrictions are configured via permission rules, not via these sandbox
+> settings: Filesystem read restrictions: Use Read deny rules.
+> Filesystem write restrictions: Use Edit allow/deny rules. Network
+> restrictions: Use WebFetch allow/deny rules."
 
-"무엇을 허용할지"(정책)와 "그 정책을 어떻게 물리적으로 강제할지"(메커니즘)가
+즉 "이 설정이 하는 일"과 "권한 규칙이 하는 일"을 docstring 첫머리에서부터
+갈라놓는다. "무엇을 허용할지"(정책)와 "그 정책을 어떻게 물리적으로 강제할지"(메커니즘)가
 아키텍처 레벨에서 분리돼 있다. 그리고 `enableWeakerNestedSandbox`라는
 필드가 있다.
 
