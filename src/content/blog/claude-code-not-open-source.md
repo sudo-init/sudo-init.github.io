@@ -23,7 +23,7 @@ Anthropic이 GitHub에 올려둔 저장소부터 정리하면 이렇다.
 |---|---|---|
 | [`anthropics/claude-code`](https://github.com/anthropics/claude-code) | 이슈 트래커, 설치 스크립트, 공식 플러그인, `.claude/commands`, 훅·설정·엔터프라이즈 예제 | all rights reserved — 오픈소스 아님 |
 | [`anthropics/claude-agent-sdk-python`](https://github.com/anthropics/claude-agent-sdk-python) | CLI를 서브프로세스로 구동하는 Python 래퍼의 전체 소스 | MIT |
-| `anthropics/claude-agent-sdk-typescript` | 같은 것의 TypeScript 버전 | 동일 계열 |
+| [`anthropics/claude-agent-sdk-typescript`](https://github.com/anthropics/claude-agent-sdk-typescript) | 같은 것의 TypeScript 버전 | all rights reserved |
 
 `claude-code` 저장소를 열면 `README.md`가 이렇게 안내한다.
 
@@ -36,8 +36,13 @@ CLI 본체는 컴파일된 바이너리로 설치될 뿐, 저장소 안에는 �
 명시돼 있다. 즉 이 저장소는 **버그 리포트·플러그인·문서용 껍데기**다.
 
 반면 `claude-agent-sdk-python`은 진짜 오픈소스다. MIT 라이선스고, 코드도 전부
-읽을 수 있다. 그런데 그 코드를 열어보면 한 줄짜리 docstring이 정체를
-밝혀버린다.
+읽을 수 있다. 여기서 뜻밖의 비대칭을 하나 발견했다 — 같은 회사가 나란히
+공개한 TypeScript SDK(`claude-agent-sdk-typescript`)는 `LICENSE.md`를 직접
+열어보면 `claude-code`와 똑같은 "© Anthropic PBC. All rights reserved."다.
+공식 SDK 두 개 중 하나는 MIT, 하나는 all rights reserved라는 뜻이다. 이
+시리즈는 그중 진짜로 열려 있는 Python 쪽을 따라간다.
+
+코드를 열어보면 한 줄짜리 docstring이 정체를 밝혀버린다.
 
 ```python
 # _internal/transport/subprocess_cli.py
