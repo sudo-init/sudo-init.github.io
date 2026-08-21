@@ -83,6 +83,54 @@ draft: true
 원칙을 쓰는데, 여기선 정반대다 — 사용자가 지금 보고 있는 응답의 연속성이
 저장소 동기화의 완결성보다 우선한다.
 
+## 하나의 대화, 여러 갈래로 갈라진 JSONL을 복원하는 법
+
+`sessions.py`에서 가장 정교한 함수는 `_build_conversation_chain`이다.
+세션 파일 하나가 항상 일직선의 대화인 건 아니다 — 서브에이전트가 만드는
+보조 대화(sidechain), 컨텍스트 압축(compaction), 팀/메타 메시지가 같은
+파일에 섞여 있을 수 있다. 이 함수는 그 안에서 "지금 보여줘야 할 하나의
+대화"를 복원한다.
+
+방식은 이렇다. 각 엔트리를 `uuid`로 인덱싱하고, 다른 엔트리의
+`parentUuid`로 참조되지 않는 "터미널" 엔트리들을 찾는다. 각 터미널에서
+`parentUuid`를 거슬러 올라가며 가장 가까운 user/assistant 타입 엔트리를
+찾고, sidechain·team·meta가 아닌 것들 중 파일에서 가장 나중에 등장한
+걸 "메인 체인의 끝"으로 고른다. 거기서부터 `parentUuid`를 반복
+추적해 루트까지 올라간 다음 순서를 뒤집으면 시간순 대화가 된다.
+
+흥미로운 디테일 하나. `compact_boundary` 엔트리에는 `logicalParentUuid`라는,
+압축 이전 원본 메시지를 가리키는 필드가 따로 있는데, 이 함수는 그걸
+**의도적으로 따라가지 않는다**.
+
+> "Note: logicalParentUuid (set on compact_boundary entries) is
+> intentionally NOT followed. This matches VS Code IDE behavior —
+> post-compaction, the isCompactSummary message replaces earlier
+> messages, so following logical parents would duplicate content."
+
+"VS Code IDE 동작과 일치시킨다"는 문구가 이 파일 안에서 두 번 나온다.
+CLI와 SDK, 그리고 VS Code 확장까지 — 셋 다 공식 스펙 문서 하나 없는 이
+JSONL 포맷을 각자 독립적으로 파싱하고 있고, 적어도 이 SDK 팀은 그 셋
+사이의 동작을 일부러 맞추고 있다는 뜻이다. 비공식 파일 포맷 하나가
+사실상 여러 클라이언트가 합의해야 하는 프로토콜이 된 셈이다.
+
+## 워크트리는 그냥 git한테 물어본다
+
+세션 목록에 워크트리 정보를 붙이는 `_get_worktree_paths`엔 별다른
+마법이 없다. `git worktree list --porcelain`을 서브프로세스로 실행해서
+파싱할 뿐이다.
+
+```python
+result = subprocess.run(
+    ["git", "worktree", "list", "--porcelain"],
+    cwd=cwd, capture_output=True, text=True, timeout=5, check=False,
+)
+```
+
+`git`이 없거나 타임아웃되면 그냥 빈 리스트를 돌려준다 — 워크트리 정보는
+"있으면 좋은" 부가 정보지, 실패하면 안 되는 필수 경로가 아니라는 뜻이다.
+경로를 유니코드 NFC로 정규화하는 줄도 있는데, macOS 파일시스템이 기본으로
+쓰는 NFD 표기와의 차이를 흡수하기 위해서다.
+
 ## 프로토콜에 숨어 있던 기능들
 
 세션 파일을 읽다가 CHANGELOG나 공식 문서만 봐서는 몰랐을 기능들도
