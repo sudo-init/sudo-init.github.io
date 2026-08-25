@@ -1,5 +1,7 @@
 ---
 title: '코드로 읽는 Codex 하네스 (3) — 함수 호출 하나가 실행되기까지'
+slug: codex-harness-tool-system
+category: ai
 description: 'tools 크레이트와 core/src/tools를 열어, 모델이 뱉은 함수 호출이 실제 실행으로 이어지는 경로와 실패를 모델에게 되돌려주는 방식을 코드로 확인했다.'
 pubDate: 2026-08-21T14:00:00+09:00
 tags: ['ai-agent', 'codex', 'harness', 'source-analysis']

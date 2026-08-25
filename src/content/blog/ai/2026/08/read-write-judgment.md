@@ -1,5 +1,7 @@
 ---
 title: 'AI 도구는 매달 바뀐다 — 안 바뀌는 건 읽기·쓰기·판단력이다'
+slug: read-write-judgment
+category: ai
 description: '베조스가 말한 "변하지 않는 것에 집중하라"는 전략을 개발자에게 대입하면, AI 시대에 뭘 먼저 훈련해야 하는지가 꽤 명확해진다.'
 pubDate: 2026-08-20T11:03:05+09:00
 tags: ['ai-agent', '개발자', '커리어']

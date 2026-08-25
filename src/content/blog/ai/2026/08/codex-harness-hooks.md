@@ -1,5 +1,7 @@
 ---
 title: '코드로 읽는 Codex 하네스 (11) — 훅은 셸 명령이거나 MCP 도구다'
+slug: codex-harness-hooks
+category: ai
 description: 'hooks 크레이트를 열어, 시리즈 내내 인용만 했던 run_pre_tool_use_hooks 같은 함수들의 실체와 11가지 훅 이벤트, 신뢰 게이트를 코드로 확인했다.'
 pubDate: 2026-08-22T19:30:00+09:00
 tags: ['ai-agent', 'codex', 'harness', 'source-analysis']

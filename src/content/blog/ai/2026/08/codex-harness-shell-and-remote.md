@@ -1,5 +1,7 @@
 ---
 title: '코드로 읽는 Codex 하네스 (12) — 셸은 기억하고, 원격 채널은 양자 이후를 대비한다'
+slug: codex-harness-shell-and-remote
+category: ai
 description: '시즌 2 마지막 편. 영속 셸 세션(shell_snapshot, unified_exec)과 원격 exec-server의 포스트퀀텀 하이브리드 암호화 채널을 열어보고 12편짜리 시리즈를 마무리했다.'
 pubDate: 2026-08-22T21:30:00+09:00
 tags: ['ai-agent', 'codex', 'harness', 'source-analysis']

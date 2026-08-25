@@ -1,5 +1,7 @@
 ---
 title: '검증은 하면서 되묻지는 않는다 — 이 대화의 메모리 정책에도 같은 구멍이 있었다'
+slug: memory-commitment-clarify-gap
+category: ai
 description: '메모리 커밋 판단을 네 갈래로 쪼갠 논문이 Claude·Qwen 모두 "되묻기"에서 제일 취약하다는 걸 실측했다. 그 구멍이 지금 이 대화를 굴리는 자동 메모리 정책 자체에도 있는지 직접 대조해봤다.'
 pubDate: 2026-08-24T07:50:06+09:00
 tags: ['ai-agent', 'harness', 'claude-code', 'memory']

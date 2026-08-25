@@ -1,5 +1,7 @@
 ---
 title: 'CLI는 원격 저장소라는 걸 모른다'
+slug: claude-code-session-illusion
+category: ai
 description: '커스텀 세션 저장소를 붙이면 CLI가 그걸 아는 줄 알았다. 코드를 열어보니 SDK가 진짜 ~/.claude처럼 생긴 임시 디렉터리를 만들어서 CLI를 속이고 있었다.'
 pubDate: 2026-08-21T13:02:41+09:00
 tags: ['ai-agent', 'harness', 'claude-code', 'agent-sdk']

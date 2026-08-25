@@ -1,5 +1,7 @@
 ---
 title: '정밀도는 3.3%로 무너지는데 성공률은 그대로다 — 답을 내 스킬 폴더에서 찾았다'
+slug: agent-skills-chaining
+category: ai
 description: 'Claude Code 스킬을 다룬 논문이 스킬 풀이 100개로 커지면 검색 정밀도가 3.3%까지 무너지는데 성공률은 그대로라는 걸 실측했다. 그 모순의 답을 실제 내 스킬 11개의 SKILL.md에서 직접 찾아봤다.'
 pubDate: 2026-08-23T14:07:18+09:00
 tags: ['ai-agent', 'harness', 'claude-code', 'skills']

@@ -1,5 +1,7 @@
 ---
 title: 'Claude Code는 오픈소스가 아니다 — SDK를 열어보니 얘기가 달라졌다'
+slug: claude-code-not-open-source
+category: ai
 description: '"Claude Code, 오픈소스로 공개돼 있잖아?"라는 말을 듣고 저장소를 직접 열어봤다. 소스는 없었지만, 그 대신 클로즈드소스 CLI와 대화하는 방법을 통째로 공개한 SDK가 있었다.'
 pubDate: 2026-08-21T09:14:22+09:00
 tags: ['ai-agent', 'harness', 'claude-code', 'open-source']

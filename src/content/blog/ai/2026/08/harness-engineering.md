@@ -1,5 +1,7 @@
 ---
 title: '프롬프트 엔지니어링부터 컨텍스트 엔지니어링을 거쳐 하네스 엔지니어링까지'
+slug: harness-engineering
+category: ai
 description: '에이전트 성능을 좌우하는 병목이 프롬프트에서 컨텍스트로, 다시 하네스로 옮겨간 과정을 층마다 예시와 함께 짚었다.'
 pubDate: 2026-08-20T11:02:53+09:00
 tags: ['ai-agent', 'harness', 'prompt-engineering', 'context-engineering']

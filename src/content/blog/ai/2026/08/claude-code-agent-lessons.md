@@ -1,5 +1,7 @@
 ---
 title: '에이전트가 "끝났다"는 걸 어떻게 아는가'
+slug: claude-code-agent-lessons
+category: ai
 description: '실제 프로덕션 프롬프트, 5,693줄짜리 CHANGELOG, 그리고 이슈 번호까지 인용하며 "완전한 해법이 아니라 완화책"이라 스스로 적어둔 코드를 근거로, 범용 에이전트를 만들 때 가져다 쓸 걸 정리했다.'
 pubDate: 2026-08-21T15:26:18+09:00
 tags: ['ai-agent', 'harness', 'claude-code', 'agent-design']

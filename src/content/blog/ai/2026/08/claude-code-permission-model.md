@@ -1,5 +1,7 @@
 ---
 title: '권한 프롬프트 문장은 누가 만드는가'
+slug: claude-code-permission-model
+category: ai
 description: '"Claude가 foo.txt를 읽으려 합니다" 같은 문장은 어디서 오는지, 훅 10종류는 병렬로 도는지 순차로 도는지, 샌드박스는 권한 규칙과 왜 다른 축인지 — Claude Code의 권한·훅·샌드박스를 SDK 타입 정의로 뜯어봤다.'
 pubDate: 2026-08-21T10:47:05+09:00
 tags: ['ai-agent', 'harness', 'claude-code', 'permissions']
