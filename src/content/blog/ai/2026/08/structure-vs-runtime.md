@@ -1,5 +1,7 @@
 ---
 title: '"다양한 GPT 모델 지원"이라 적혀 있었는데, 코드에는 한 줄도 없었다'
+slug: structure-vs-runtime
+category: ai
 description: '6월엔 85% 완성이라던 프로젝트가 7월에 열어보니 전부 0%였다. 왜 매번 구조만 보고 다 됐다고 믿게 되는지 원인을 추적해봤다.'
 pubDate: 2026-08-20T12:59:05+09:00
 tags: ['ai-agent', 'harness', '회고']

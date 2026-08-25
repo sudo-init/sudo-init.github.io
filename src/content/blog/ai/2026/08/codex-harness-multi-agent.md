@@ -1,5 +1,7 @@
 ---
 title: '코드로 읽는 Codex 하네스 (9) — 에이전트가 에이전트를 부른다'
+slug: codex-harness-multi-agent
+category: ai
 description: 'agent-graph-store와 agent-identity를 열어, Codex가 서브에이전트의 부모-자식 관계를 그래프로 추적하고 암호학적 신원까지 부여하는 멀티 에이전트 오케스트레이션 구조를 코드로 확인했다.'
 pubDate: 2026-08-22T15:30:00+09:00
 tags: ['ai-agent', 'codex', 'harness', 'source-analysis']

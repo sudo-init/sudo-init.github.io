@@ -1,5 +1,7 @@
 ---
 title: '코드로 읽는 Codex 하네스 (1) — 지도 그리기'
+slug: codex-harness-map
+category: ai
 description: 'OpenAI가 Apache-2.0으로 공개한 Codex 하네스 소스를 직접 열어, 사용자 입력 한 번이 모델 호출과 툴 실행을 거쳐 응답으로 돌아오기까지의 경로를 실제 코드로 추적했다.'
 pubDate: 2026-08-20T15:30:00+09:00
 tags: ['ai-agent', 'codex', 'harness', 'source-analysis']

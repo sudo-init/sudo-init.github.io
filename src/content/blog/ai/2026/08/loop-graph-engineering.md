@@ -1,5 +1,7 @@
 ---
 title: '하네스 다음엔 루프, 그다음엔 그래프였다'
+slug: loop-graph-engineering
+category: ai
 description: '루프 엔지니어링과 그래프 엔지니어링, 이게 진짜 새 층인지 그냥 재포장인지 가르는 기준을 원전까지 추적해서 만들어봤다.'
 pubDate: 2026-08-20T13:18:38+09:00
 tags: ['ai-agent', 'harness', 'loop-engineering', 'graph-engineering']

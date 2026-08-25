@@ -1,5 +1,7 @@
 ---
 title: '로컬 LLM은 정말 저렴한가? 언제 쓰면 좋을까?'
+slug: local-llm-cost
+category: ai
 description: '월 수십억 토큰을 쓰면서 로컬 LLM을 진지하게 검토했다. 직접 띄워 돌려보고 3년 총소유비용까지 계산한 결과와, 거기서 얻은 판단 기준.'
 pubDate: 2026-08-12T16:32:34+09:00
 tags: ['llm', 'local-llm', '비용']

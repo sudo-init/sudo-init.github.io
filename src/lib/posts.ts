@@ -44,7 +44,7 @@ export function tagHref(tag: string): string {
 }
 
 export function postHref(post: Post): string {
-  return `/posts/${post.id}/`;
+  return `/posts/${post.data.slug}/`;
 }
 
 export type TagGroup = { slug: string; tag: string; posts: Post[] };

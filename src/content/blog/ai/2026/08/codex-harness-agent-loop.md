@@ -1,5 +1,7 @@
 ---
 title: '코드로 읽는 Codex 하네스 (2) — 모델을 부르고, 스스로 기억을 줄인다'
+slug: codex-harness-agent-loop
+category: ai
 description: 'run_turn이 호출하는 client.rs와 compact.rs를 열어, Codex가 모델을 어떻게 부르고 컨텍스트가 꽉 찼을 때 무엇을 하는지 실제 코드로 확인했다.'
 pubDate: 2026-08-21T11:00:00+09:00
 tags: ['ai-agent', 'codex', 'harness', 'source-analysis', 'context-engineering']

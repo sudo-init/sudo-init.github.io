@@ -8,6 +8,9 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    // 파일을 카테고리나 날짜 폴더로 옮겨도 공개 URL은 바뀌지 않는다.
+    slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+    category: z.enum(['ai', 'software']),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     tags: z.array(z.string()).default([]),

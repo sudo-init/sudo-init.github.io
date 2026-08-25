@@ -1,5 +1,7 @@
 ---
 title: '코드로 읽는 Codex 하네스 (10) — OpenAI 없이도 켜진다'
+slug: codex-harness-model-provider
+category: ai
 description: 'model-provider와 ollama/lmstudio 크레이트를 열어, ModelClient가 OpenAI뿐 아니라 Amazon Bedrock과 로컬 모델까지 같은 인터페이스로 추상화하는 방식을 코드로 확인했다.'
 pubDate: 2026-08-22T17:00:00+09:00
 tags: ['ai-agent', 'codex', 'harness', 'source-analysis']

@@ -14,13 +14,23 @@ npm run check    # 타입 · 콘텐츠 스키마 검사
 
 ## 글 쓰기
 
-`src/content/blog/` 에 `.md` 파일을 하나 만들면 끝이다. 파일 이름이 그대로
-URL이 된다 (`hello.md` → `/posts/hello/`). 영문 소문자와 하이픈으로 짓는 것이
-주소가 깔끔하다.
+글은 `src/content/blog/<category>/<YYYY>/<MM>/` 아래에 만든다. 카테고리는
+`ai`와 `software` 중 하나를 사용하고, 연도와 월은 `pubDate`에 맞춘다.
+예를 들어 AI 글을 2026년 8월에 발행한다면 다음 위치다.
+
+```text
+src/content/blog/ai/2026/08/hello.md
+```
+
+공개 URL은 파일 경로가 아니라 프론트매터의 `slug`로 정한다. 따라서 글을 다른
+카테고리나 날짜 폴더로 옮겨도 URL은 바뀌지 않는다. `slug`는 영문 소문자,
+숫자와 하이픈만 사용한다 (`hello` → `/posts/hello/`).
 
 ```yaml
 ---
 title: '제목'
+slug: hello
+category: ai
 description: '목록과 공유 카드에 노출되는 한 줄 요약'
 pubDate: 2026-08-13
 updatedDate: 2026-08-20 # 선택
@@ -29,9 +39,9 @@ draft: true # 선택 — true 면 개발 서버에서만 보인다
 ---
 ```
 
-`title`, `description`, `pubDate` 는 필수다. 빠지거나 형식이 틀리면 빌드가
-실패하면서 어느 파일의 어느 항목인지 알려주므로, 오타를 배포 후에 발견할 일은
-없다.
+`title`, `slug`, `category`, `description`, `pubDate` 는 필수다. 빠지거나
+형식이 틀리면 빌드가 실패하면서 어느 파일의 어느 항목인지 알려주므로, 오타를
+배포 후에 발견할 일은 없다.
 
 ### 알아두면 좋은 것
 
@@ -48,7 +58,7 @@ draft: true # 선택 — true 면 개발 서버에서만 보인다
 
 ```bash
 npm run dev                      # 띄워두면 저장할 때마다 바로 반영된다
-# src/content/blog/새-글.md 작성
+# src/content/blog/ai/2026/08/새-글.md 작성
 npm run build                    # 최종 확인 (초안은 빌드에서 빠진다)
 git add . && git commit -m "..." && git push
 ```
@@ -66,7 +76,7 @@ Actions 탭에서 볼 수 있다.
 ```
 src/
 ├── components/   헤더, 푸터, 글 목록, 태그 등 UI 조각
-├── content/blog/ 글 (마크다운)
+├── content/blog/ 카테고리와 발행 월별 글 (마크다운)
 ├── layouts/      BaseLayout(공통 셸), PostLayout(글 상세)
 ├── lib/posts.ts  글 조회 · 정렬 · 태그 · 읽는 시간
 ├── pages/        라우트

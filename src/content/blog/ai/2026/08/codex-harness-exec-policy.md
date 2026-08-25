@@ -1,5 +1,7 @@
 ---
 title: '코드로 읽는 Codex 하네스 (7) — 이 명령, 물어보지 않고 실행해도 될까'
+slug: codex-harness-exec-policy
+category: ai
 description: 'execpolicy와 shell-command 크레이트를 열어, Codex가 어떤 셸 명령을 사람에게 묻지 않고 자동 승인하는지 결정하는 규칙과, 그 판정 로직 자체가 지켜야 하는 안전 원칙을 코드로 확인했다.'
 pubDate: 2026-08-22T10:00:00+09:00
 tags: ['ai-agent', 'codex', 'harness', 'source-analysis']

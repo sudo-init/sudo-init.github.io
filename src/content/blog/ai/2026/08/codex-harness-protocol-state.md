@@ -1,5 +1,7 @@
 ---
 title: '코드로 읽는 Codex 하네스 (6) — 기록하고, 다시 접속한다'
+slug: codex-harness-protocol-state
+category: ai
 description: '시리즈 마지막 편. rollout과 mcp-server/codex-mcp를 열어, Codex가 세션을 어떻게 두 가지 형태로 저장하고 MCP를 클라이언트이자 서버로 동시에 쓰는지 확인하며 여섯 편을 마무리했다.'
 pubDate: 2026-08-21T21:30:00+09:00
 tags: ['ai-agent', 'codex', 'harness', 'source-analysis']
