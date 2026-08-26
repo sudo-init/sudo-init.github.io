@@ -59,6 +59,10 @@ Astro가 페이지와 레이아웃, 작은 컴포넌트를 import해서 조합�
 오타 하나 때문에 배포된 뒤에야 깨진 페이지를 발견하는 일이 줄어든다.
 
 ```ts
+import { defineCollection } from 'astro:content';
+import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
+
 const blog = defineCollection({
   loader: glob({ base: './src/content/blog', pattern: '**/[^_]*.md' }),
   schema: z.object({
