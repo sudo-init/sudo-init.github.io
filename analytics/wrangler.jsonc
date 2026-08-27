@@ -1,0 +1,23 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "sudo-init-analytics",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-27",
+  "observability": { "enabled": true },
+  "vars": {
+    // 비콘을 받아줄 출처. 여기 없는 곳에서 온 요청은 버린다.
+    "ALLOWED_ORIGINS": "https://sudo-init.github.io"
+  },
+  // 폭주를 막는 두 겹. 넘치면 그냥 버리고 D1 에 쓰지 않는다.
+  "ratelimits": [
+    { "name": "IP_LIMIT", "namespace_id": "1001", "simple": { "limit": 30, "period": 60 } },
+    { "name": "ALL_LIMIT", "namespace_id": "1002", "simple": { "limit": 500, "period": 60 } }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "sudo-init-analytics",
+      "database_id": "9eb276cf-79ba-471c-94d6-169f9e0c40e7"
+    }
+  ]
+}

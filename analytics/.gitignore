@@ -1,0 +1,7 @@
+node_modules/
+.wrangler/
+.dev.vars
+worker-configuration.d.ts
+
+# 대시보드 주소에는 토큰이 들어 있다. 절대 커밋하지 않는다.
+dashboard-url.txt
