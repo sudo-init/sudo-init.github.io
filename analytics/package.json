@@ -1,0 +1,16 @@
+{
+  "name": "sudo-init-analytics",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "schema": "wrangler d1 execute sudo-init-analytics --remote --file ./schema.sql",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "latest",
+    "typescript": "^6.0.3",
+    "wrangler": "^4.126.0"
+  }
+}
