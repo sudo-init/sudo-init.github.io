@@ -1,0 +1,48 @@
+---
+/**
+ * 방문 집계 비콘.
+ *
+ * 수집기는 analytics/ 의 Cloudflare Worker 다. 쿠키를 쓰지 않고, 서버도
+ * IP 를 저장하지 않는다 (날짜가 섞인 salt 로 해시만 남긴다).
+ *
+ * 내 방문을 빼려면 주소 뒤에 ?nostats=1 을 붙여 한 번 열면 된다.
+ * 그 브라우저는 그 뒤로 계속 제외된다. 되돌리려면 ?nostats=0.
+ */
+const ENDPOINT = 'https://sudo-init-analytics.levdev.workers.dev/hit';
+const HOST = 'sudo-init.github.io';
+---
+
+<script is:inline define:vars={{ ENDPOINT, HOST }}>
+  (() => {
+    // 로컬 개발 서버에서 글을 확인하는 것은 방문이 아니다.
+    if (location.hostname !== HOST) return;
+
+    try {
+      const flag = new URLSearchParams(location.search).get('nostats');
+      if (flag !== null) {
+        if (flag === '0') localStorage.removeItem('nostats');
+        else localStorage.setItem('nostats', '1');
+      }
+      if (localStorage.getItem('nostats') === '1') return;
+    } catch {
+      // localStorage 를 막아둔 브라우저라면 제외 설정만 포기하고 그냥 센다.
+    }
+
+    const body = JSON.stringify({ p: location.pathname, r: document.referrer });
+    try {
+      // text/plain 이라 사전 요청(preflight)이 붙지 않는다.
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(ENDPOINT, new Blob([body], { type: 'text/plain' }));
+      } else {
+        fetch(ENDPOINT, {
+          method: 'POST',
+          body,
+          keepalive: true,
+          headers: { 'Content-Type': 'text/plain' },
+        });
+      }
+    } catch {
+      // 집계가 실패한다고 페이지가 망가질 이유는 없다.
+    }
+  })();
+</script>
