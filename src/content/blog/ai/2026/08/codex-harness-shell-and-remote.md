@@ -5,7 +5,6 @@ category: ai
 description: '시즌 2 마지막 편. 영속 셸 세션(shell_snapshot, unified_exec)과 원격 exec-server의 포스트퀀텀 하이브리드 암호화 채널을 열어보고 12편짜리 시리즈를 마무리했다.'
 pubDate: 2026-08-22T21:30:00+09:00
 tags: ['ai-agent', 'codex', 'harness', 'source-analysis']
-draft: true
 ---
 
 시즌 2 마지막 편이다. [7편](/posts/codex-harness-exec-policy/)부터

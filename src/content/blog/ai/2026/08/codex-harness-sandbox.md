@@ -5,7 +5,6 @@ category: ai
 description: 'sandboxing 크레이트를 열어, Codex가 정의한 OS 중립적 샌드박스 정책 하나를 macOS Seatbelt·Linux bubblewrap+landlock·Windows 제한 토큰이 각각 어떻게 구현하는지 코드로 확인했다.'
 pubDate: 2026-08-21T19:00:00+09:00
 tags: ['ai-agent', 'codex', 'harness', 'source-analysis']
-draft: true
 ---
 
 [4편](/posts/codex-harness-apply-patch/)에서 apply_patch가 파일을 쓸 수

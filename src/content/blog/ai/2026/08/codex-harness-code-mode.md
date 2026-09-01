@@ -5,7 +5,6 @@ category: ai
 description: 'code-mode 관련 크레이트 네 개와 v8-poc를 열어, Codex가 매 턴 함수 하나씩 부르는 대신 V8 격리 환경에서 스크립트로 여러 도구를 한 번에 오케스트레이션하게 만든 구조를 코드로 확인했다.'
 pubDate: 2026-08-22T13:00:00+09:00
 tags: ['ai-agent', 'codex', 'harness', 'source-analysis']
-draft: true
 ---
 
 [7편](/posts/codex-harness-exec-policy/)에서 어떤 명령을 사람에게 묻지 않고

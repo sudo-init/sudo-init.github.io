@@ -5,7 +5,6 @@ category: ai
 description: 'run_turn이 호출하는 client.rs와 compact.rs를 열어, Codex가 모델을 어떻게 부르고 컨텍스트가 꽉 찼을 때 무엇을 하는지 실제 코드로 확인했다.'
 pubDate: 2026-08-21T11:00:00+09:00
 tags: ['ai-agent', 'codex', 'harness', 'source-analysis', 'context-engineering']
-draft: true
 ---
 
 [1편](/posts/codex-harness-map/)에서 `run_turn`이 "압축 → MCP 서버 선정 →
