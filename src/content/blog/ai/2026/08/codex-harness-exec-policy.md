@@ -5,7 +5,6 @@ category: ai
 description: 'execpolicy와 shell-command 크레이트를 열어, Codex가 어떤 셸 명령을 사람에게 묻지 않고 자동 승인하는지 결정하는 규칙과, 그 판정 로직 자체가 지켜야 하는 안전 원칙을 코드로 확인했다.'
 pubDate: 2026-08-22T10:00:00+09:00
 tags: ['ai-agent', 'codex', 'harness', 'source-analysis']
-draft: true
 ---
 
 [3편](/posts/codex-harness-tool-system/)에서 승인 경로가 두 갈래(사람 승인,

@@ -5,7 +5,6 @@ category: ai
 description: 'hooks 크레이트를 열어, 시리즈 내내 인용만 했던 run_pre_tool_use_hooks 같은 함수들의 실체와 11가지 훅 이벤트, 신뢰 게이트를 코드로 확인했다.'
 pubDate: 2026-08-22T19:30:00+09:00
 tags: ['ai-agent', 'codex', 'harness', 'source-analysis']
-draft: true
 ---
 
 이 시리즈 내내 `run_pre_tool_use_hooks`, `run_pre_compact_hooks`,

@@ -5,7 +5,6 @@ category: ai
 description: '6월엔 85% 완성이라던 프로젝트가 7월에 열어보니 전부 0%였다. 왜 매번 구조만 보고 다 됐다고 믿게 되는지 원인을 추적해봤다.'
 pubDate: 2026-08-20T12:59:05+09:00
 tags: ['ai-agent', 'harness', '회고']
-draft: true
 ---
 
 6월 로드맵 문서엔 이렇게 적혀 있었다. "gpt-playground, 85% 완성, 차단 버그 1건."

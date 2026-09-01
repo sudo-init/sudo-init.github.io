@@ -5,7 +5,6 @@ category: ai
 description: 'apply-patch 크레이트를 열어, Codex가 왜 unified diff 대신 자체 패치 포맷을 만들었는지, 그 포맷을 스트리밍으로 파싱하고 퍼지 매칭으로 적용하는 방식을 코드로 확인했다.'
 pubDate: 2026-08-21T16:30:00+09:00
 tags: ['ai-agent', 'codex', 'harness', 'source-analysis']
-draft: true
 ---
 
 [3편](/posts/codex-harness-tool-system/)에서 도구 인벤토리를 훑을 때
