@@ -1,6 +1,6 @@
 ---
 import FormattedDate from './FormattedDate.astro';
-import { postHref, readingTime, type Post } from '../lib/posts';
+import { postHref, type Post } from '../lib/posts';
 
 interface Props {
   posts: Post[];
@@ -20,7 +20,6 @@ const { posts, emptyText = '아직 글이 없습니다.' } = Astro.props;
           <a href={postHref(post)}>
             <p class="meta">
               <FormattedDate date={post.data.pubDate} />
-              <span> · {readingTime(post.body)} min</span>
               {post.data.draft && <span class="draft"> · draft</span>}
             </p>
             <h2>{post.data.title}</h2>

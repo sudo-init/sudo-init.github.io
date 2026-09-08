@@ -4,7 +4,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import TagPill from '../components/TagPill.astro';
 import BaseLayout from './BaseLayout.astro';
-import { readingTime, type Post } from '../lib/posts';
+import type { Post } from '../lib/posts';
 
 interface Props {
   post: Post;
@@ -28,7 +28,6 @@ const { title, description, pubDate, updatedDate, tags, draft } = post.data;
     <header>
       <p class="meta">
         <FormattedDate date={pubDate} />
-        <span> · {readingTime(post.body)} min read</span>
         {draft && <span class="draft"> · draft</span>}
       </p>
       <h1>{title}</h1>

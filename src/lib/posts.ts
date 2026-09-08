@@ -21,20 +21,6 @@ export async function getPublishedPosts(): Promise<Post[]> {
   );
 }
 
-/**
- * 한글은 글자 수, 영문은 단어 수로 나눠 세고 합산한다.
- * 한국어 본문에 영문 용어가 섞이는 글에서 단어 수만 세면 크게 빗나가기 때문.
- */
-export function readingTime(body = ''): number {
-  const text = body
-    .replace(/```[\s\S]*?```/g, '')
-    .replace(/`[^`]*`/g, '')
-    .replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1');
-  const korean = text.match(/[가-힣]/g)?.length ?? 0;
-  const words = text.match(/[A-Za-z0-9]+/g)?.length ?? 0;
-  return Math.max(1, Math.round(korean / 500 + words / 220));
-}
-
 export function tagSlug(tag: string): string {
   return tag.trim().toLowerCase().replace(/\s+/g, '-');
 }
